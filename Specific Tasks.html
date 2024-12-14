@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Week5 Specific Tasks</title>
+
+<script>
+//------------------------------------------------------------
+//first script to create the object of mydog. then an alert to 
+//display the information.
+//------------------------------------------------------------
+
+let mydog = {Breed:"Unknown", TVProgram:"Naruto", Name:"Akamaru", Note:"Kiba Inuzaka's ninja Dog", mySound:"My howl strikes fear into our opponents!"};
+
+alert("Hello, My name is " + mydog.Name + ", " + mydog.mySound + " I'm From the hit animated series Naruto. The breed of dog I am is " + mydog.Breed + " and I am " + mydog.Note)
+</script>
+
+<script>
+//------------------------------------------------------------
+//script for creating the secondary object called myDogConst.
+//------------------------------------------------------------
+
+function dog(breed, tvprogram, name, note, mysound, cantalk){
+	this.Breed = breed;
+	this.TVProgram = tvprogram;
+	this.Name = name;
+	this.Note = note;
+	this.mySound = mysound;
+	this.canTalk = cantalk
+	
+//method to print out information regarding the created object.
+//------------------------------------------------------------
+	dog.prototype.myGreeting = function(){
+		document.write("Hello, My name is " + this.Name + ", I'm from the show " + this.TVProgram + "<br>");
+		document.write("My breed is " + this.Breed + " and I am " + this.Note + "<br>");
+		document.write(this.mySound + "<br>");
+		if (this.canTalk === "true"){
+			document.write("I can speak!");
+		}
+		else if (this.canTalk === "false"){
+			document.write("I cant speak.");
+		}
+		else{
+			document.write("unknown speech ability.")
+		}
+		document.write("<br>");
+	}
+}
+
+// creation of the 3 dogs.
+//------------------------------------------------------------
+let myDogConst = new dog("unknown", "naruto", "Akamaru", "Kiba Inuzaka's ninja Dog", "My howl strikes fear into our opponents!", "false");
+let newDogConst = new dog("generic", "Blues Clues", "Blue", "Steve's Dog", "Lets have fun doing activities!", "false");
+let DogConst = new dog("Unknown", "Courage The Cowardly dog", "Courage", "Merial's dog", "Eeek! I have to save Merial!", "true");
+
+
+
+//calling of the method to print to the page the information stored in the object.
+//------------------------------------------------------------
+myDogConst.myGreeting();
+
+DogConst.myGreeting();
+
+document.write("<br>");
+document.write("<br>");
+</script>
+
+<script>
+//------------------------------------------------------------
+//use of FOR IN to display properties of dogs.
+//------------------------------------------------------------
+
+for (let key in myDogConst){
+	if(myDogConst.hasOwnProperty(key)){
+		value = myDogConst[key];
+		document.write(key + ": " + value + "<br>");
+	}
+}
+
+document.write("<br>");
+
+for (let key in newDogConst){
+	if(newDogConst.hasOwnProperty(key)){
+		value = newDogConst[key];
+		document.write(key + ": " + value + "<br>");
+	}
+}
+
+document.write("<br>");
+
+for (let key in DogConst){
+	if(DogConst.hasOwnProperty(key)){
+		value = DogConst[key];
+		document.write(key + ": " + value + "<br>");
+	}
+}
+//prompt user to select what dog they want to see.
+//------------------------------------------------------------
+document.write("------------------------------------------------<br>");
+
+var choice = prompt("what dog's info would you like to see? (Akamaru, Blue, or Courage): ").toLowerCase();
+
+do{
+	if(choice === "akamaru"){
+		
+		for (let key in myDogConst){
+			if(myDogConst.hasOwnProperty(key)){
+				value = myDogConst[key];
+				document.write(key + ": " + value + "<br>");
+			}
+		}
+		document.write("<br>");
+		myDogConst.myGreeting();
+	}
+	
+	
+	else if(choice === "blue"){
+		
+		for (let key in newDogConst){
+			if(newDogConst.hasOwnProperty(key)){
+				value = newDogConst[key];
+				document.write(key + ": " + value + "<br>");
+			}
+		}
+		document.write("<br>");
+		newDogConst.myGreeting();
+	}
+	
+	else if(choice === "courage"){
+		
+		for (let key in DogConst){
+			if(DogConst.hasOwnProperty(key)){
+				value = DogConst[key];
+				document.write(key + ": " + value + "<br>");
+			}
+		}
+		document.write("<br>");
+		DogConst.myGreeting();
+	}
+else{
+	alert("Sorry that selection does not exist in the list, Please try again.");
+}
+	
+}while(false);
+document.write("------------------------------------------------");
+</script>
+</head>
+<body>
+
+</body>
+</html>
